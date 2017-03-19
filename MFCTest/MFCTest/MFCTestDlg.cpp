@@ -7,6 +7,8 @@
 #include "MFCTestDlg.h"
 #include "afxdialogex.h"
 
+#include "OpenCVBasic.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -31,6 +33,7 @@ void CMFCTestDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMFCTestDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDOK, &CMFCTestDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -46,6 +49,8 @@ BOOL CMFCTestDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+    OpenCVBasic basic;
+    basic.OpenImage("F:\\inanh\\1c5d07e01b1ef140a80f.jpg");
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -84,4 +89,12 @@ void CMFCTestDlg::OnPaint()
 HCURSOR CMFCTestDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+
+void CMFCTestDlg::OnBnClickedOk()
+{
+    
+	// TODO: Add your control notification handler code here
+	CDialogEx::OnOK();
 }
